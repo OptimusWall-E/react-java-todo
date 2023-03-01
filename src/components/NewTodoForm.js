@@ -6,6 +6,7 @@ function NewTodoForm() {
   const [assigned, setAssigned] = useState('');
 
   const descriptionChange = (event) => {
+    // event. target gives you the element that triggered the event. So, event. target. value retrieves the value of that element
     console.log('description', event.target.value);
     setDescription(event.target.value);
   }
@@ -23,6 +24,8 @@ function NewTodoForm() {
           type='text' 
           className='form-control' 
           required
+          //uses onChange hook to call assignedChange. assignedChange uses useState through setAssigned, which uses event.target.value to 
+          //capture the value of the element that triggered the event
           onChange = {assignedChange}
           value = {assigned}>
         </input>
