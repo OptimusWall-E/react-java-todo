@@ -15,12 +15,12 @@ function App() {
 
   // onClick=addTodo is a pointer. 
   // We don't add () or it will be called automatically, without being clicked
-  const addTodo = () => {
+  const addTodo = (description, assigned) => {
     if (todos.length > 0) {
       const newTodo = {
         rowNumber: todos.length + 1,
-        rowDescription: 'New task',
-        rowAssigned: 'User Three'
+        rowDescription: description,
+        rowAssigned: assigned
       };
       setTodos(todos => [...todos, newTodo]);
     }
@@ -36,7 +36,7 @@ function App() {
           <button className='btn btn-primary' onClick={addTodo}>
             Add new task
           </button>
-          <NewTodoForm/>
+          <NewTodoForm addTodo={addTodo}/>
         </div>
       </div>
     </div>
