@@ -13,6 +13,8 @@ function App() {
   ]
   )
 
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
+
   // onClick=addTodo is a pointer. 
   // We don't add () or it will be called automatically, without being clicked
   const addTodo = (description, assigned) => {
@@ -40,10 +42,10 @@ function App() {
         </div>
         <div className='card-body'>
           <TodoTable todos={todos} deleteTodo={deleteTodo}/>
-          <button className='btn btn-primary' onClick={addTodo}>
-            Add new task
+          <button onClick={() => setShowAddTodoForm(!showAddTodoForm)} className='btn btn-primary'>
+            {showAddTodoForm? 'Close' : 'Add New Todo'}
           </button>
-          <NewTodoForm addTodo={addTodo}/>
+          {showAddTodoForm && <NewTodoForm addTodo={addTodo}/>}
         </div>
       </div>
     </div>
